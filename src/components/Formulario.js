@@ -9,7 +9,11 @@ const Formulario = () => {
       fecha: '',
       hora: '',
       sintomas: ''
-  })
+  });
+
+  //Crear state de errores
+  const [error, actualizarError] = useState(false);
+
   // Funcion que se ejecuta para actualizar los datos d ela cita
   const actualizarState = e => {
     actualizarCita({
@@ -18,13 +22,40 @@ const Formulario = () => {
     })
   } 
 
+  // Extraer los valores del formulario
   const { mascota, propietario, fecha, hora, sintomas } = cita;
 
+  // Cuando el usuario presiona agregar cita
+
+  const submitCita = e => {
+    e.preventDefault();
+
+    // Validar
+    if( mascota.trim() === '' || propietario.trim() === '' || 
+      fecha.trim() === '' || hora.trim() === '' || 
+      sintomas.trim() === ''){
+
+        actualizarError(true);
+        return;
+    }
+
+    actualizarError(false);
+
+    // Asignar ID
+
+    // Crear la cita
+
+    // Reiniciar el form
+  }
 
   return ( 
     <Fragment>
-        <h2>Desde formulario</h2>
-        <form>
+        <h2>Crear Cita</h2>
+        { error ? <p className="alerta-error">Todos los campos son obligatorios</p> : null}
+       
+        <form
+          onSubmit={submitCita}
+        >
           <label>Nombre mascota</label>
           <input
             type="text"
