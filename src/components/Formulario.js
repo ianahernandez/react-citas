@@ -40,6 +40,7 @@ const Formulario = () => {
     }
 
     actualizarError(false);
+    console.log(cita)
 
     // Asignar ID
 
