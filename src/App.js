@@ -18,11 +18,8 @@ function App() {
   // valor pasado por parámetro (en el array)
   useEffect( () => {
     // Se ejecuta cada vez que cambia el state de citas
-    if(citasIniciales){
-      localStorage.setItem('citas', JSON.stringify(citas));
-    } else {
-      localStorage.setItem('citas', JSON.stringify([]));
-    }
+    localStorage.setItem('citas', JSON.stringify(citas));
+    
   }, [citas]);
 
   // Funcion que agregue nueva cita
